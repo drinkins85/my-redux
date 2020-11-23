@@ -1,18 +1,18 @@
-interface IActionWithType {
+export interface IActionWithType {
     type: string,
 }
 
-interface ICreateStore<S> {
+export interface IStore<S> {
     getState: () => S,
     dispatch: (action: TAction) => void,
     subscribe: (cb: TCallback) => () => void
 }
 
 type TCallback = () => void;
-type TAction = Partial<IActionWithType>;
-type TReducer<S> = (action: TAction) => S;
+export type TAction = Partial<IActionWithType>;
+export type TReducer<T> = (state: T, action: TAction) => T;
 
-export default function createStore<T>(reducer: TReducer<T>, initialState: T): ICreateStore<T> {
+export default function createStore<T>(reducer: TReducer<T>, initialState: T): IStore<T> {
     let state: T = initialState;
     let listeners: Array<TCallback> = [];
 
@@ -27,7 +27,7 @@ export default function createStore<T>(reducer: TReducer<T>, initialState: T): I
     };
 
     const dispatch = (action: TAction) => {
-        state = reducer(action);
+        state = reducer(state, action);
         listeners.forEach((listener) => {
             listener();
         });
