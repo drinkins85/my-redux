@@ -1,0 +1,18 @@
+.Button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #a2cadc;
+    border: none;
+    outline: none;
+    margin: 0 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.Button:hover {
+    background-color: aquamarine;
+}
+
+.Button:active {
+    background-color: darkcyan;
+}
