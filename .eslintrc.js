@@ -54,6 +54,7 @@ module.exports = {
             },
         ],
         'no-console': 2,
+        'import/no-cycle': 0,
         '@typescript-eslint/no-var-requires': 0,
         '@typescript-eslint/no-unused-vars': 2,
         'react/jsx-props-no-spreading': 0,

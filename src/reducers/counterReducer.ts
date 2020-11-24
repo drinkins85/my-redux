@@ -1,8 +1,8 @@
 import { TReducer } from '../redux/createStore';
-import { IState } from '../store/state';
+import { IState } from '../store/configureStore';
 import { IAction } from '../actions/counterActions';
 
-const counterReducer: TReducer<IState> = (state: IState, action: IAction) => {
+const counterReducer: TReducer<IState, IAction> = (state: IState, action: IAction) => {
     switch (action.type) {
         case 'INC':
             return {
