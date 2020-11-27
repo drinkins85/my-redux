@@ -1,5 +1,7 @@
-export type TActionType = 'INC'|'DEC';
+import { IAction } from '../redux/createStore';
 
-export interface IAction {
-    type: TActionType
+export type TCounterActionType = 'INC'|'DEC';
+
+export interface ICounterAction extends IAction {
+    type: TCounterActionType
 }

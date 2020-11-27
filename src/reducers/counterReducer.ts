@@ -1,22 +1,22 @@
-import { TReducer } from '../redux/createStore';
-import { IState } from '../store/configureStore';
-import { IAction } from '../actions/counterActions';
+import { ICounterState } from '../store/counter';
+import { ICounterAction } from '../actions/counterActions';
 
-const counterReducer: TReducer<IState, IAction> = (state: IState, action: IAction) => {
+export default function counterReducer(
+    state: ICounterState,
+    action: ICounterAction,
+): ICounterState {
     switch (action.type) {
         case 'INC':
             return {
                 ...state,
-                count: state.count + 1,
+                value: state.value + 1,
             };
         case 'DEC':
             return {
                 ...state,
-                count: state.count - 1,
+                value: state.value - 1,
             };
         default:
             return state;
     }
 };
-
-export default counterReducer;

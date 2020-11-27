@@ -1,15 +1,15 @@
-import createStore, { IStore } from '../redux/createStore';
-import counterReducer from '../reducers/counterReducer';
-import { IAction } from '../actions/counterActions';
+import createStore, { IStore, IState, IAction } from '../redux/createStore';
+import rootReducer from '../reducers/rootReducer';
+import { ICounterState, initialCounterState } from './counter';
 
-export interface IState {
-    count: number;
+export interface IAppState extends IState {
+    counter: ICounterState
 }
 
-const initialState: IState = {
-    count: 0,
+const initialState: IAppState = {
+    counter: initialCounterState,
 };
 
-export default function configureStore(): IStore<IState, IAction> {
-    return createStore(counterReducer, initialState);
+export default function configureStore(): IStore<IAppState, IAction> {
+    return createStore<IAppState, IAction>(rootReducer, initialState);
 }
