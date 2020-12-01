@@ -1,8 +1,10 @@
-export interface IStore<S, A> {
+export interface IStore<S = IState, A = IAction> {
     getState: () => S,
-    dispatch: (action: A) => void,
+    dispatch: TDispatch<A>,
     subscribe: (cb: TCallback) => () => void
 }
+
+export type TDispatch<A = IAction> = (action: A) => void;
 
 export interface IActionWithType<T = any> {
     type: T
