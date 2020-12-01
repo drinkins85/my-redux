@@ -3,6 +3,7 @@ import configureStore from './store/configureStore';
 import CounterButton from './components/CounterButton/CounterButton';
 import CounterLabel from './components/CounterLabel/CounterLabel';
 import StepLabel from './components/StepLabel/StepLabel';
+import StepButton from './components/StepButton/StepButton';
 import Provider from './react-redux/Provider';
 import './App.css';
 
@@ -19,6 +20,8 @@ export default function App(): JSX.Element {
                 <hr />
                 <h3>Step</h3>
                 <StepLabel />
+                <StepButton text="-" type="STEP_DEC" />
+                <StepButton text="+" type="STEP_INC" />
             </Provider>
         </div>
     );

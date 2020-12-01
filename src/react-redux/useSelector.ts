@@ -8,13 +8,22 @@ type TSelector<S = IState, T = any> = (state: S) => T;
 
 export default function useSelector<S = IState, T = any>(selector: TSelector<S, T>): T {
     const store: IStore<S> = useContext(ReactReduxContext);
+
+    if (!store) {
+        throw new Error('Store is missing');
+    }
+
     const [, forceRender] = useReducer((s) => s + 1, 0);
 
     const savedSelector = useRef<TSelector<S, T>>();
     const savedState = useRef<S>();
     const savedSelectedState = useRef<T>();
     const state = store.getState();
-    const selectedState = selector(state);
+    let selectedState = savedSelectedState.current;
+
+    if (state !== savedState.current || selector !== savedSelector.current) {
+        selectedState = selector(state);
+    }
 
     useEffect(() => {
         savedSelector.current = selector;
@@ -24,7 +33,7 @@ export default function useSelector<S = IState, T = any>(selector: TSelector<S, 
 
     useEffect(() => {
         const checkUpdates = () => {
-            const newSelectedState = savedSelector.current(savedState.current);
+            const newSelectedState = savedSelector.current(store.getState());
 
             if (newSelectedState === savedSelectedState.current) {
                 return;
