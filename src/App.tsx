@@ -1,7 +1,7 @@
 import React from 'react';
 import configureStore from './store/configureStore';
-import Button from './components/Button/Button';
-import Label from './components/Label/Label';
+import CounterButton from './components/CounterButton/CounterButton';
+import CounterLabel from './components/CounterLabel/CounterLabel';
 import Provider from './react-redux/Provider';
 import './App.css';
 
@@ -11,9 +11,9 @@ export default function App(): JSX.Element {
     return (
         <div className="App">
             <Provider store={store}>
-                <Label />
-                <Button name="-" type="DEC" />
-                <Button name="+" type="INC" />
+                <CounterLabel />
+                <CounterButton text="-" type="DEC" />
+                <CounterButton text="+" type="INC" />
             </Provider>
         </div>
     );

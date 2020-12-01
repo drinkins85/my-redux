@@ -1,27 +1,24 @@
 import React from 'react';
-import connect from '../../react-redux/Connect';
-import { IAppState } from '../../store/configureStore';
-
 import './Label.css';
 
-interface ILabelProps {
-    count?: number,
+export interface ILabelProps {
+    value?: number,
 }
 
-function Label({ count }: ILabelProps): JSX.Element {
+export default function Label({ value }: ILabelProps): JSX.Element {
     return (
-        <div className="Label">{count}</div>
+        <div className="Label">{value}</div>
     );
 }
 
-type TPropsFromState = {
-    count: number
-}
+// type TPropsFromState = {
+//     count: number
+// }
+//
+// function mapStateToProps(state: IAppState): TPropsFromState {
+//     return {
+//         count: state.counter.value,
+//     };
+// }
 
-function mapStateToProps(state: IAppState): TPropsFromState {
-    return {
-        count: state.counter.value,
-    };
-}
-
-export default connect<ILabelProps, IAppState, TPropsFromState>(mapStateToProps)(Label);
+// export default connect<ILabelProps, IAppState, TPropsFromState>(mapStateToProps)(Label);
