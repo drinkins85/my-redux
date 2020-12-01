@@ -10,15 +10,3 @@ export default function Label({ value }: ILabelProps): JSX.Element {
         <div className="Label">{value}</div>
     );
 }
-
-// type TPropsFromState = {
-//     count: number
-// }
-//
-// function mapStateToProps(state: IAppState): TPropsFromState {
-//     return {
-//         count: state.counter.value,
-//     };
-// }
-
-// export default connect<ILabelProps, IAppState, TPropsFromState>(mapStateToProps)(Label);
